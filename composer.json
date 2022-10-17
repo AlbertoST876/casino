@@ -1,0 +1,35 @@
+{
+    "name": "albertost876/blackjack",
+    "description": "Game of card BlackJack or 21",
+    "version": "1.0.0-dev",
+    "type": "project",
+    "license": "GPL-3.0-only",
+    "minimum-stability": "dev",
+    "time": "2022-10-17 13:00:00",
+    "authors": [
+        {
+            "name": "Alberto Sánchez Torreblanca",
+            "email": "albertost876.ast@gmail.com",
+            "homepage": "https://albertost.sytes.net/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "ext-mysqli": "*"
+    },
+    "require-dev": {
+        "php": ">=8.1",
+        "ext-mysqli": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "BlackJack\\Classes\\": "src/classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "BlackJack\\Classes\\": "src/classes/"
+        }
+    }
+}
