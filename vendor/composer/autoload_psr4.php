@@ -6,5 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'BlackJack\\Classes\\' => array($baseDir . '/src/classes', $baseDir . '/src/classes'),
+    'Casino\\Classes\\Cards\\' => array($baseDir . '/src/classes/cards', $baseDir . '/src/classes/cards'),
+    'Casino\\Classes\\BJ\\' => array($baseDir . '/src/classes/BJ', $baseDir . '/src/classes/BJ'),
+    'Casino\\Classes\\' => array($baseDir . '/src/classes', $baseDir . '/src/classes'),
 );

@@ -1,11 +1,11 @@
 {
-    "name": "albertost876/blackjack",
-    "description": "Game of card BlackJack or 21",
+    "name": "albertost876/casino",
+    "description": "Games of cards BlackJack and Poker",
     "version": "1.0.0-dev",
     "type": "project",
     "license": "GPL-3.0-only",
     "minimum-stability": "dev",
-    "time": "2022-10-17 13:00:00",
+    "time": "2022-10-18 23:15:00",
     "authors": [
         {
             "name": "Alberto Sánchez Torreblanca",
@@ -24,12 +24,22 @@
     },
     "autoload": {
         "psr-4": {
-            "BlackJack\\Classes\\": "src/classes/"
-        }
+            "Casino\\Classes\\": "src/classes/",
+            "Casino\\Classes\\Cards\\": "src/classes/cards/",
+            "Casino\\Classes\\BJ\\": "src/classes/BJ/"
+        },
+        "files": [
+            "./src/functions/test.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
-            "BlackJack\\Classes\\": "src/classes/"
-        }
+            "Casino\\Classes\\": "src/classes/",
+            "Casino\\Classes\\Cards\\": "src/classes/cards/",
+            "Casino\\Classes\\BJ\\": "src/classes/BJ/"
+        },
+        "files": [
+            "./src/functions/test.php"
+        ]
     }
 }

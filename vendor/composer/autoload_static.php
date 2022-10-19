@@ -6,15 +6,31 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit01164d377278118a3082b73947717bed
 {
+    public static $files = array (
+        'dbbc049c3712f40aeaf328b4344a0c50' => __DIR__ . '/../..' . '/src/functions/test.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
-        'B' => 
+        'C' => 
         array (
-            'BlackJack\\Classes\\' => 18,
+            'Casino\\Classes\\Cards\\' => 21,
+            'Casino\\Classes\\BJ\\' => 18,
+            'Casino\\Classes\\' => 15,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'BlackJack\\Classes\\' => 
+        'Casino\\Classes\\Cards\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/classes/cards',
+            1 => __DIR__ . '/../..' . '/src/classes/cards',
+        ),
+        'Casino\\Classes\\BJ\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/classes/BJ',
+            1 => __DIR__ . '/../..' . '/src/classes/BJ',
+        ),
+        'Casino\\Classes\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/classes',
             1 => __DIR__ . '/../..' . '/src/classes',

@@ -1,6 +1,6 @@
 <?php return array(
     'root' => array(
-        'name' => 'albertost876/blackjack',
+        'name' => 'albertost876/casino',
         'pretty_version' => '1.0.0-dev',
         'version' => '1.0.0.0-dev',
         'reference' => NULL,
@@ -10,7 +10,7 @@
         'dev' => true,
     ),
     'versions' => array(
-        'albertost876/blackjack' => array(
+        'albertost876/casino' => array(
             'pretty_version' => '1.0.0-dev',
             'version' => '1.0.0.0-dev',
             'reference' => NULL,
