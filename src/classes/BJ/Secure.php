@@ -26,6 +26,13 @@ class Secure {
         return $this -> bet;
     }
 
+    /**
+     * Comprueba si se gana el seguro frente al crupier
+     *
+     * @param int $crupierScore Puntuación del crupier
+     * @param int $crupierCountCards Cantidad de cartas que tiene el crupier
+     * @return int
+     */
     public function check(int $crupierScore, int $crupierCountCards): int {
         if ($crupierScore == 21 && $ $crupierCountCards == 2) return $this -> bet * 3;
 

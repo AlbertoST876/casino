@@ -21,18 +21,18 @@ class Player extends User {
     /**
      * Devuelve la mano del jugador
      *
-     * @return Hand
+     * @return Hand|null
      */
-    public function getHand(): Hand {
+    public function getHand(): Hand|null {
         return $this -> hand;
     }
 
     /**
      * Devuelve el seguro del jugador
      *
-     * @return Secure
+     * @return Secure|null
      */
-    public function getSecure(): Secure {
+    public function getSecure(): Secure|null {
         return $this -> secure;
     }
 

@@ -8,6 +8,8 @@ namespace Casino\Classes;
 class User {
     private int $id;
     private string $name;
+    private string $password;
+    private string $email;
     private int $chips;
 
     /**
@@ -17,9 +19,11 @@ class User {
      * @param string $name Nombre del usuario
      * @param int $chips Cantidad de fichas del usuario
      */
-    public function __construct(int $id, string $name, int $chips) {
+    public function __construct(int $id, string $name, string $password, string $email, int $chips) {
         $this -> id = $id;
         $this -> name = $name;
+        $this -> password = $password;
+        $this -> email = $email;
         $this -> chips = $chips;
     }
 
@@ -39,6 +43,24 @@ class User {
      */
     public function getName(): string {
         return $this -> name;
+    }
+
+    /**
+     * Obtiene la contraseña del usuario
+     *
+     * @return string
+     */
+    public function getPassword(): string {
+        return $this -> password;
+    }
+
+    /**
+     * Obtiene el email del usuario
+     *
+     * @return string
+     */
+    public function getEmail(): string {
+        return $this -> email;
     }
 
     /**

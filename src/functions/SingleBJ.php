@@ -1,15 +1,19 @@
 <?php
 
-use Casino\Classes\Cards\Shuffler;
+use Casino\Classes\Cards\Deck;
 
-function getShufflerCards(): void {
-    $shuffler = new Shuffler();
-    $decks = $shuffler -> getDecks();
+/**
+ * Obtiene el número de cartas indicado del barajador
+ *
+ * @param int $amount Cantidad de cartas a obtener
+ * @return void
+ */
+function getCardsAmount(int $amount): void {
+    $deck = new Deck();
 
-    foreach ($decks as $deck) {
-        $cards = $deck -> getCards();
-
-        foreach ($cards as $card) $card -> show();
+    for ($i = 0; $i < $amount; $i++) {
+        $card = $deck -> getRandomCard();
+        $card -> show();
     }
 }
 

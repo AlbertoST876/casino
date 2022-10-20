@@ -1,0 +1,66 @@
+/* GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+.card {
+    width: 50px;
+    height: 70px;
+}
+/* GENERAL */
+
+/* LOGIN */
+.login {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 500px;
+    border-radius: 20px;
+    border: 1px solid #000000;
+    background-color: #dddddd;
+}
+
+.login h1 {
+    display: block;
+    font-size: 50px;
+    text-align: center;
+}
+
+.login form {
+    display: block;
+    margin: 20px auto;
+    width: 200px;
+}
+
+.login form label {
+    display: block;
+    margin: 5px 0;
+}
+
+.login form input {
+    display: block;
+    margin-bottom: 20px;
+    width: 98%;
+}
+
+.login form input[type="submit"], .login form input[type="reset"] {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 5px;
+    width: 49%;
+}
+
+.login form input[type="button"] {
+    display: block;
+    margin: 10px 0;
+    padding: 5px;
+    width: 100%;
+}
+
+.login .cards {
+    display: block;
+}
+/* LOGIN */

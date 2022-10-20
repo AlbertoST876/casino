@@ -1,15 +1,4 @@
-<?php
-    include "./vendor/autoload.php";
-    session_start();
-
-    if (isset($_POST["login"]) || isset($_POST["register"])) {
-        if (isset($_POST["login"])) $_SESSION["user"] = login();
-        if (isset($_POST["register"])) $_SESSION["user"] = register();
-    
-        header("Location: ./play.php");
-        exit();
-    }
-?>
+<?php include "./vendor/autoload.php"; ?>
 <!DOCTYPE html>
 
 <html lang="es">
@@ -19,15 +8,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./assets/css/style.css">
         <link rel="icon" href="./assets/icons/icon.png">
-        <title>AlbertoST Informática - Casino - Inicio</title>
+        <title>AlbertoST Informática - Casino - Registro</title>
     </head>
 
     <body>
         <main>
             <div class="login">
-                <h1>Iniciar Sesión</h1>
+                <h1>Registro</h1>
 
                 <form action="./index.php" method="post">
+                    <div>
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="text" name="email" maxlength="50" required>
+                    </div>
+
                     <div>
                         <label for="username">Nombre de Usuario:</label>
                         <input type="text" name="username" maxlength="25" required>
@@ -39,12 +33,12 @@
                     </div>
 
                     <div>
-                        <input type="submit" name="login" value="Iniciar Sesión">
+                        <input type="submit" name="register" value="Registrarse">
                         <input type="reset" value="Cancelar">
                     </div>
 
                     <div>
-                        <a href="./register.php"><input type="button" value="Registrarse"></a>
+                        <a href="./index.php"><input type="button" value="Volver"></a>
                     </div>
                 </form>
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace BlackJack\Classes;
+namespace Casino\Classes;
 use Exception;
 use mysqli;
 
