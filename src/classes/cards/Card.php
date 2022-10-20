@@ -55,7 +55,7 @@ class Card {
      * @return void
      */
     public function show(): void {
-        echo "<img src='./assets/img/" . $this -> suit . "-" . $this -> value . ".png'>";
+        echo "<img class='card' src='./assets/img/" . $this -> suit . "-" . $this -> value . ".png'>";
     }
 }
 
