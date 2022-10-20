@@ -3,13 +3,20 @@
 namespace Casino\Classes\BJ;
 use Casino\Classes\User;
 use Casino\Classes\BJ\Hand;
+use Casino\Classes\BJ\Secure;
 use Casino\Classes\Cards\Card;
 
 /**
  * Clase que define un jugador de BlackJack
  */
 class Player extends User {
-    private Hand $hand;
+    private Hand|null $hand;
+    private Secure|null $secure;
+
+    public function reset(): void {
+        $this -> hand = null;
+        $this -> secure = null;
+    }
 
     /**
      * Devuelve la mano del jugador
@@ -18,6 +25,15 @@ class Player extends User {
      */
     public function getHand(): Hand {
         return $this -> hand;
+    }
+
+    /**
+     * Devuelve el seguro del jugador
+     *
+     * @return Secure
+     */
+    public function getSecure(): Secure {
+        return $this -> secure;
     }
 
     /**
@@ -30,6 +46,23 @@ class Player extends User {
         if ($amount <= $this -> getChips()) {
             $this -> removeChips($amount);
             $this -> hand = new Hand($amount);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * El jugador hace un seguro frente a un BlackJack del crupier
+     *
+     * @param int $amount Cantidad de fichas que asegura el jugador, siempre menor a la mitad apostada anteriormente
+     * @return bool
+     */
+    public function secure(int $amount): bool {
+        if ($amount <= floor($this -> hand -> getBet() / 2)) {
+            $this -> removeChips($amount);
+            $this -> secure = new Secure($amount);
 
             return true;
         }

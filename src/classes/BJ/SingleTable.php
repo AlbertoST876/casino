@@ -61,37 +61,30 @@ class SingleTable {
         return $this -> player;
     }
 
-    // REVISAR - CÓDIGO ANTIGUO
-    public function addCard(): void {
-        $deck = array_rand($this -> decks);
-        $card = $this -> decks[$deck] -> getRandomCard();
+    /**
+     * Da una carta del barajador al jugador
+     *
+     * @return int
+     */
+    public function addPlayerCard(): int {
+        $card = $this -> shuffler -> getCard();
+        $card -> show();
 
-        $this -> cards[] = $card;
-        $this -> addScore($card -> getValor());
+        return $this -> player -> giveCard($card);
     }
 
-    private function addScore(string $value): void {
-        if ($value == "A") $this -> score += 11;
-        if ($value < 11) $this -> score += $value;
-        if ($value == "J" || $value == "Q" || $value == "K") $this -> score += 10;
+    /**
+     * Da una carta del barajador al crupier
+     *
+     * @return int
+     */
+    public function addCrupierCard(): int {
+        $card = $this -> shuffler -> getCard();
+        $card -> show();
 
-        foreach ($this -> cards as $card) {
-            if ($card -> getValor() == "A" && $this -> score > 21) $this -> score -= 10;
-        }
+        $this -> crupier -> giveCard($card);
 
-        if ($this -> score > 16) {
-            $this -> player -> getHand() -> checkScore($this -> score);
-        }
-
-        if ($this -> score > 21) {
-            $this -> player -> getHand() -> checkScore($this -> score);
-        }
-    }
-
-    public function getPlayerCard(): void {
-        $deck = array_rand($this -> decks);
-        
-        $this -> player -> giveCard($this -> decks[$deck] -> getRandomCard());
+        return $this -> crupier -> getScore();
     }
 }
 

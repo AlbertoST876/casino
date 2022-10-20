@@ -128,7 +128,7 @@ class Hand {
      * @param int $crupierScore Puntuación del crupier
      * @return int
      */
-    public function checkScore(int $crupierScore): int {
+    public function check(int $crupierScore): int {
         if ($crupierScore < $this -> score && !($this -> invalidScore)) return $this -> win();
         
         return $this -> lose($crupierScore);
