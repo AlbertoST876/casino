@@ -12,7 +12,7 @@ class DB {
     private string $hostname = "localhost"; // Servidor - Por defecto: "localhost"
     private string $username = "root"; // Usuario - Por defecto: "root"
     private string $password = ""; // Contraseña
-    private string $database = "es_blackjack"; // Base de Datos - Por defecto: "es_blackjack"
+    private string $database = "es_casino"; // Base de Datos - Por defecto: "es_casino"
 
     private mysqli $connect;
 

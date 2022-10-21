@@ -1,4 +1,12 @@
-<?php include "./vendor/autoload.php"; ?>
+<?php
+    include "./vendor/autoload.php";
+    session_start();
+
+    if (isLogin()) {
+        header("Location: play.php");
+        exit();
+    }
+?>
 <!DOCTYPE html>
 
 <html lang="es">

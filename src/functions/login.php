@@ -73,4 +73,25 @@ function logout(): void {
     exit();
 }
 
+/**
+ * Comprueba si un usuario ha iniciado sesión
+ *
+ * @return bool
+ */
+function isLogin(): bool {
+    return isset($_SESSION["user"]) || !empty($_SESSION["user"]);
+}
+
+/**
+ * Si el usuario no ha iniciado sesión, lo manda al index
+ *
+ * @return void
+ */
+function isUserLogged(): void {
+    if (!isLogin()) {
+        header("Location: ./index.php");
+        exit();
+    }
+}
+
 ?>

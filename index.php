@@ -1,6 +1,11 @@
 <?php
     include "./vendor/autoload.php";
     session_start();
+    
+    if (isLogin()) {
+        header("Location: play.php");
+        exit();
+    }
 
     if (isset($_POST["login"]) || isset($_POST["register"])) {
         if (isset($_POST["login"])) $_SESSION["user"] = login();

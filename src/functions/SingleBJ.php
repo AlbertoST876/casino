@@ -1,6 +1,6 @@
 <?php
 
-use Casino\Classes\Cards\Deck;
+use Casino\Classes\Cards\Shuffler;
 
 /**
  * Obtiene el número de cartas indicado del barajador
@@ -9,10 +9,10 @@ use Casino\Classes\Cards\Deck;
  * @return void
  */
 function getCardsAmount(int $amount): void {
-    $deck = new Deck();
+    $shuffler = new Shuffler();
 
     for ($i = 0; $i < $amount; $i++) {
-        $card = $deck -> getRandomCard();
+        $card = $shuffler -> getCard();
         $card -> show();
     }
 }
