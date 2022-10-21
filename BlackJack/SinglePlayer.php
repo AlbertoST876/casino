@@ -14,16 +14,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./assets/css/style.css">
         <link rel="icon" href="./assets/icons/icon.png">
-        <title>AlbertoST Informática - Casino - Play</title>
+        <title>AlbertoST Informática - Casino - BlackJack</title>
     </head>
 
     <body>
         <main>
-            <h1>Bienvenido <?php echo ucfirst($user -> getName()); ?></h1>
-
-            <div class="deck">
-                <?php getDeckCards(); ?>
-            </div>
+            
         </main>
     </body>
 </html>
