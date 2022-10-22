@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./assets/css/style.css">
         <link rel="icon" href="./assets/icons/icon.png">
-        <title>AlbertoST Informática - Casino - Registro</title>
+        <title>AlbertoST Informática - Casino - Inicio</title>
     </head>
 
     <body>
@@ -23,8 +23,8 @@
                     <li><a href="./index.php">Inicio</a></li>
 
                     <?php if (!isLogin()) { ?>
-                        <li><a href="./login.php">Iniciar Sesión</a></li>
-                        <li><a id="actual" href="./register.php">Registrarse</a></li>
+                        <li><a id="actual" href="./login.php">Iniciar Sesión</a></li>
+                        <li><a href="./register.php">Registrarse</a></li>
                     <?php } else { ?>
                         <li><a href="./play.php">Jugar</a></li>
                     <?php } ?>
@@ -34,14 +34,9 @@
 
         <main>
             <div class="login">
-                <h1>Registro</h1>
+                <h1>Iniciar Sesión</h1>
 
-                <form action="./register.php" method="post">
-                    <div>
-                        <label for="email">Correo Electrónico:</label>
-                        <input type="text" name="email" maxlength="50" required>
-                    </div>
-
+                <form action="./login.php" method="post">
                     <div>
                         <label for="username">Nombre de Usuario:</label>
                         <input type="text" name="username" maxlength="25" required>
@@ -53,17 +48,17 @@
                     </div>
 
                     <div>
-                        <input type="submit" name="register" value="Registrarse">
+                        <input type="submit" name="login" value="Iniciar Sesión">
                         <input type="reset" value="Cancelar">
                     </div>
 
                     <div>
-                        <a href="./index.php"><input type="button" value="Volver"></a>
+                        <a href="./register.php"><input type="button" value="Registrarse"></a>
                     </div>
                 </form>
 
                 <?php
-                    if (isset($_POST["register"])) $_SESSION["user"] = register();
+                    if (isset($_POST["login"])) $_SESSION["user"] = login();
 
                     if (isLogin()) {
                         header("Location: ./play.php");

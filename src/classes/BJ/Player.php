@@ -13,6 +13,21 @@ class Player extends User {
     private Hand|null $hand;
     private Secure|null $secure;
 
+    /**
+     * Constructor del jugador
+     */
+    public function __construct(User $user) {
+        parent::__construct($user -> getId(), $user -> getName(), $user -> getPassword(), $user -> getEmail(), $user -> getChips());
+
+        $this -> hand = null;
+        $this -> secure = null;
+    }
+
+    /**
+     * Resetea la mano y el seguro del jugador
+     *
+     * @return void
+     */
     public function reset(): void {
         $this -> hand = null;
         $this -> secure = null;
@@ -100,7 +115,7 @@ class Player extends User {
      * @return void
      */
     public function check(int $crupierScore): void {
-        $this -> addChips($this -> hand -> checkScore($crupierScore));
+        $this -> addChips($this -> hand -> check($crupierScore));
     }
 }
 

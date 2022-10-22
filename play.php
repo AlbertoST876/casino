@@ -1,7 +1,11 @@
 <?php
     include "./vendor/autoload.php";
     session_start();
-    isUserLogged();
+    
+    if (!isLogin()) {
+        header("Location: ./index.php");
+        exit();
+    }
 
     $user = $_SESSION["user"];
 ?>
@@ -18,6 +22,19 @@
     </head>
 
     <body>
+        <header>
+            <a class="img" href="./index.php"><img src="./assets/icons/icon.png"></a>
+
+            <nav>
+                <ul>
+                    <li><a href="./index.php">Inicio</a></li>
+                    <li><a id="actual" href="./play.php">Jugar</a></li>
+
+                    <li class="logout"><a href="./index.php?logout">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </header>
+
         <main>
             <h1>Bienvenido <?php echo ucfirst($user -> getName()); ?></h1>
 

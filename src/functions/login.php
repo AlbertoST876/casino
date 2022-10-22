@@ -2,6 +2,7 @@
 
 use Casino\Classes\DB;
 use Casino\Classes\User;
+use Casino\Classes\Cards\Shuffler;
 
 /**
  * Añade un usuario a la Base de Datos
@@ -18,7 +19,7 @@ function register(): User|null {
         $username = $connect -> clearString($_POST["username"]);
         $password = password_hash($connect -> clearString($_POST["password"]), PASSWORD_DEFAULT);
 
-        $result = $connect -> Select("SELECT username FROM users WHERE username = '$username'");
+        $result = $connect -> Select("SELECT username FROM users WHERE email = '$email' OR username = '$username'");
 
         if (count($result) == 0) {
             $connect -> Insert("INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')");
@@ -27,7 +28,7 @@ function register(): User|null {
 
             return new User($result[0]["id"], $result[0]["username"], $result[0]["password"], $result[0]["email"], $result[0]["chips"]);
         } else {
-            echo "<p>El nombre de usuario introducido ya existe</p>";
+            echo "<p>El email o nombre de usuario introducido ya existe</p>";
         }
     }
 
@@ -84,14 +85,17 @@ function isLogin(): bool {
 }
 
 /**
- * Si el usuario no ha iniciado sesión, lo manda al index
+ * Obtiene el número de cartas indicado del barajador
  *
+ * @param int $amount Cantidad de cartas a obtener
  * @return void
  */
-function isUserLogged(): void {
-    if (!isLogin()) {
-        header("Location: ./index.php");
-        exit();
+function getCardsAmount(int $amount): void {
+    $shuffler = new Shuffler();
+
+    for ($i = 0; $i < $amount; $i++) {
+        $card = $shuffler -> getCard();
+        $card -> show();
     }
 }
 
