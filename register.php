@@ -16,9 +16,9 @@
 
     <body>
         <header>
-            <a class="img" href="./index.php"><img src="./assets/icons/icon.png"></a>
-
             <nav>
+                <a class="img" href="./index.php"><img src="./assets/icons/icon.png"></a>
+
                 <ul>
                     <li><a href="./index.php">Inicio</a></li>
 
@@ -58,7 +58,7 @@
                     </div>
 
                     <div>
-                        <a href="./index.php"><input type="button" value="Volver"></a>
+                        <a href="./login.php"><input type="button" value="Volver"></a>
                     </div>
                 </form>
 

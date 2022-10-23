@@ -16,59 +16,130 @@
 }
 /* GENERAL */
 
-/* LOGIN */
-.login {
+/* HEADER */
+header {
     display: block;
-    margin: 10px auto;
-    padding: 10px;
-    width: 500px;
-    border-radius: 20px;
-    border: 1px solid #000000;
+    padding: 10px 5%;
+    width: 90%;
+    box-shadow: 0 2px 5px #dddddd;
     background-color: #dddddd;
 }
 
-.login h1 {
-    display: block;
-    font-size: 50px;
-    text-align: center;
+header nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.login form {
-    display: block;
-    margin: 20px auto;
-    width: 200px;
-}
-
-.login form label {
-    display: block;
-    margin: 5px 0;
-}
-
-.login form input {
-    display: block;
-    margin-bottom: 20px;
-    width: 98%;
-}
-
-.login form input[type="submit"], .login form input[type="reset"] {
+header nav > a {
     display: inline-block;
-    margin: 0 auto;
-    padding: 5px;
-    width: 49%;
+    line-height: 0;
 }
 
-.login form input[type="button"] {
-    display: block;
-    margin: 10px 0;
-    padding: 5px;
-    width: 100%;
+header nav > a img {
+    width: 100px;
+    height: auto;
 }
 
-.login .cards {
-    display: block;
+header nav span {
+    display: none;
 }
-/* LOGIN */
 
-/* PLAY */
+header nav ul {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-/* PLAY */
+header nav ul li {
+    margin: 10px;
+}
+
+header nav ul li.logout {
+    margin-left: 100px;
+}
+
+header nav ul li a {
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+    color: #000000;
+    background-color: #dddddd;
+    transition: all 0.4s linear;
+}
+
+header nav ul li a:hover {
+    background-color: #bbbbbb;
+}
+
+header nav ul li a#actual {
+    background-color: #bbbbbb;
+}
+/* HEADER */
+
+/* MAIN */
+    main {
+        display: block;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    main h1 {
+        display: block;
+        margin: 10px 0;
+        font-size: 50px;
+    }
+
+    /* LOGIN */
+    .login {
+        display: block;
+        margin: 10px auto;
+        padding: 10px;
+        width: 500px;
+        border-radius: 20px;
+        border: 1px solid #000000;
+        background-color: #dddddd;
+    }
+
+    .login h1 {
+        display: block;
+        font-size: 50px;
+        text-align: center;
+    }
+
+    .login form {
+        display: block;
+        margin: 20px auto;
+        width: 200px;
+    }
+
+    .login form label {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .login form input {
+        display: block;
+        margin-bottom: 20px;
+        width: 98%;
+    }
+
+    .login form input[type="submit"], .login form input[type="reset"] {
+        display: inline-block;
+        margin: 0 auto;
+        padding: 5px;
+        width: 49%;
+    }
+
+    .login form input[type="button"] {
+        display: block;
+        margin: 10px 0;
+        padding: 5px;
+        width: 100%;
+    }
+
+    .login .cards {
+        display: block;
+    }
+    /* LOGIN */
+/* MAIN */
