@@ -29,9 +29,10 @@ class SingleTable {
      *
      * @return void
      */
-    public function resetTable(): void {
+    public function reset(): void {
         $this -> shuffler = new Shuffler();
         $this -> crupier = new Crupier();
+        $this -> player -> reset();
     }
 
     /**

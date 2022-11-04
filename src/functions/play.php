@@ -14,7 +14,7 @@ function getDeckCards(): void {
     for ($i = 0; $i < count($cards); $i++) {
         if ($i == 13 || $i == 26 || $i == 39) echo "<br>";
 
-        $cards[$i] -> show();
+        $cards[$i] -> showNormal();
     }
 }
 

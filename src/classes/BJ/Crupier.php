@@ -41,6 +41,15 @@ class Crupier {
     }
 
     /**
+     * Muestra las cartas del crupier
+     *
+     * @return void
+     */
+    public function showCards(): void {
+        foreach ($this -> cards as $card) $card -> showGame();
+    }
+
+    /**
      * Obtiene el numero de cartas que tiene el crupier
      *
      * @return int
@@ -94,13 +103,15 @@ class Crupier {
      * @return void
      */
     private function addScore(string $value): void {
+        if ($value < 11) $this -> score += $value;
         if ($value == "J" || $value == "Q" || $value == "K") $this -> score += 10;
         if ($value == "A") $this -> score += 11;
 
-        if ($value < 11) $this -> score += $value;
-
         foreach ($this -> cards as $card) {
-            if ($card -> getValue() == "A" && $this -> score > 21) $this -> score -= 10;
+            if ($card -> getValue() == "A" && !$card -> getCheck() && $this -> score > 21) {
+                $this -> score -= 10;
+                $card -> check();
+            }
         }
 
         if ($this -> score > 16) $this -> playing = false;

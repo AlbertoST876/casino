@@ -94,7 +94,7 @@ function getCardsAmount(int $amount): void {
 
     for ($i = 0; $i < $amount; $i++) {
         $card = $shuffler -> getCard();
-        $card -> show();
+        $card -> showNormal();
     }
 }
 

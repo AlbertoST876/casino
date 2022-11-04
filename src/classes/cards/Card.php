@@ -8,6 +8,8 @@ namespace Casino\Classes\Cards;
 class Card {
     private int $suit;
     private int $value;
+    private bool $check;
+
     private static $suits = ["Picas", "Corazones", "Tréboles", "Diamantes"];
     private static $values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
 
@@ -20,6 +22,16 @@ class Card {
     public function __construct(int $suit, int $value) {
         $this -> suit = $suit;
         $this -> value = $value;
+        $this -> check = false;
+    }
+
+    /**
+     * Obtiene toda la información sobre la carta
+     *
+     * @return string
+     */
+    public function __toString() {
+        return $this -> getValue() . " de " . $this -> getSuit();
     }
 
     /**
@@ -41,12 +53,21 @@ class Card {
     }
 
     /**
-     * Obtiene toda la información sobre la carta
+     * Obtiene si la carta está checkeada
      *
-     * @return string
+     * @return bool
      */
-    public function getInfo(): string {
-        return $this -> getValue() . " de " . $this -> getSuit();
+    public function getCheck(): bool {
+        return $this -> check;
+    }
+
+    /**
+     * Checkea la carta
+     *
+     * @return void
+     */
+    public function check(): void {
+        $this -> check = true;
     }
 
     /**
@@ -54,7 +75,7 @@ class Card {
      *
      * @return void
      */
-    public function show(): void {
+    public function showNormal(): void {
         echo "<img class='card' src='./assets/img/" . $this -> suit . "-" . $this -> value . ".png'>";
     }
 
@@ -63,7 +84,7 @@ class Card {
      *
      * @return void
      */
-    public function show2(): void {
+    public function showGame(): void {
         echo "<img class='card' src='../assets/img/" . $this -> suit . "-" . $this -> value . ".png'>";
     }
 }

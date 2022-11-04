@@ -54,6 +54,15 @@ class Hand {
     }
 
     /**
+     * Muestra las cartas del jugador
+     *
+     * @return void
+     */
+    public function showCards(): void {
+        foreach ($this -> cards as $card) $card -> showGame();
+    }
+
+    /**
      * Obtiene el numero de cartas que tiene el jugador en la mano
      *
      * @return int
@@ -92,7 +101,7 @@ class Hand {
     /**
      * Añade una carta dada a la mano
      *
-     * @param Card $card
+     * @param Card $card Carta a añadir a la mano
      * @return void
      */
     public function addCard(Card $card): void {
@@ -107,13 +116,15 @@ class Hand {
      * @return void
      */
     private function addScore(string $value): void {
+        if ($value < 11) $this -> score += $value;
         if ($value == "J" || $value == "Q" || $value == "K") $this -> score += 10;
         if ($value == "A") $this -> score += 11;
 
-        if ($value < 11) $this -> score += $value;
-
         foreach ($this -> cards as $card) {
-            if ($card -> getValue() == "A" && $this -> score > 21) $this -> score -= 10;
+            if ($card -> getValue() == "A" && !$card -> getCheck() && $this -> score > 21) {
+                $this -> score -= 10;
+                $card -> check();
+            }
         }
 
         if ($this -> score > 21) {
