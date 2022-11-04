@@ -41,6 +41,17 @@
             <div class="deck">
                 <?php getDeckCards(); ?>
             </div>
+
+            <h2>Games</h2>
+
+            <div>
+                <h3>BlackJack</h3>
+                <p><a href="./BlackJack/SinglePlayer.php">SinglePlayer</a></p>
+                <p><a href="./play.php">MultiPlayer</a> (En desarrollo)</p>
+
+                <h3>Poker</h3>
+                <p><a href="./play.php">MultiPlayer</a> (En desarrollo)</p>
+            </div>
         </main>
     </body>
 </html>

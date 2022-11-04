@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     '4873e3cb9109174564264307d411adbe' => $baseDir . '/src/functions/login.php',
-    'f9bf8ef598a885739b51e4a1eb7bbdac' => $baseDir . '/src/functions/SingleBJ.php',
+    '00356cf26705a326098cc24cbff619df' => $baseDir . '/src/functions/play.php',
+    'ace1fbf7537ac92593b0a9c2ba07265c' => $baseDir . '/src/functions/singleBJ.php',
 );

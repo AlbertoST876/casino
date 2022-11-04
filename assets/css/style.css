@@ -90,6 +90,23 @@ header nav ul li a#actual {
         font-size: 50px;
     }
 
+    main h2 {
+        display: block;
+        margin: 10px 0;
+        font-size: 35px;
+    }
+
+    main h3 {
+        display: block;
+        margin: 10px 0;
+        font-size: 25px;
+    }
+
+    main p {
+        display: block;
+        margin: 10px 0;
+    }
+
     /* LOGIN */
     .login {
         display: block;
@@ -142,4 +159,14 @@ header nav ul li a#actual {
         display: block;
     }
     /* LOGIN */
+
+    /* TABLE */
+    .table {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        background-image: url(../img/background.png);
+        background-repeat: repeat;
+    }
+    /* TABLE */
 /* MAIN */

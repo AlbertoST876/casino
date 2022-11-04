@@ -1,5 +1,5 @@
 <?php
-    include "./vendor/autoload.php";
+    include "../vendor/autoload.php";
     session_start();
     
     if (!isLogin()) {
