@@ -22,9 +22,8 @@ function register(): User|null {
         $result = $connect -> Select("SELECT username FROM users WHERE email = '$email' OR username = '$username'");
 
         if (count($result) == 0) {
-            $connect -> Insert("INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')");
+            $connect -> Insert("INSERT INTO users (username, password, email, lastAccess) VALUES ('$username', '$password', '$email', '" . date("Y/m/d H:i:s") . "')");
             $result = $connect -> Select("SELECT id, username, password, email, chips FROM users WHERE username = '$username'");
-            $connect -> Update("UPDATE users SET lastAccess = '" . date("Y/m/d H:i:s") . "' WHERE id = '" . $result[0]["id"] . "'");
 
             return new User($result[0]["id"], $result[0]["username"], $result[0]["password"], $result[0]["email"], $result[0]["chips"]);
         } else {
