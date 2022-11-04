@@ -80,7 +80,7 @@ class Crupier {
      * Añade una carta dada a la mano
      *
      * @param Card $card Carta a dar al crupier
-     * @return int
+     * @return void
      */
     public function giveCard(Card $card): void {
         $this -> cards[] = $card;

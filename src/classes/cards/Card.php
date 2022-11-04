@@ -57,6 +57,15 @@ class Card {
     public function show(): void {
         echo "<img class='card' src='./assets/img/" . $this -> suit . "-" . $this -> value . ".png'>";
     }
+
+    /**
+     * Muestra en una imagen la carta
+     *
+     * @return void
+     */
+    public function show2(): void {
+        echo "<img class='card' src='../assets/img/" . $this -> suit . "-" . $this -> value . ".png'>";
+    }
 }
 
 ?>

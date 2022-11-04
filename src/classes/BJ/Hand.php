@@ -148,7 +148,7 @@ class Hand {
     /**
      * Si la puntuación de la mano es menor a la del crupier se devolverán cero fichas, si es igual, se devolverá lo apostado
      *
-     * @param int $crupierScore
+     * @param int $crupierScore Puntuación del crupier
      * @return int
      */
     private function lose(int $crupierScore): int {

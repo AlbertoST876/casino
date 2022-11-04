@@ -14,7 +14,7 @@ class SingleTable {
     private Player $player;
 
     /**
-     * Costructor de la mesa de BlackJack
+     * Constructor de la mesa de BlackJack
      * 
      * @param Player $player Jugador que jugará en la mesa
      */
@@ -68,7 +68,6 @@ class SingleTable {
      */
     public function addPlayerCard(): int {
         $card = $this -> shuffler -> getCard();
-        $card -> show();
 
         return $this -> player -> giveCard($card);
     }
@@ -80,7 +79,6 @@ class SingleTable {
      */
     public function addCrupierCard(): int {
         $card = $this -> shuffler -> getCard();
-        $card -> show();
 
         $this -> crupier -> giveCard($card);
 

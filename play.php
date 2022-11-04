@@ -37,6 +37,7 @@
 
         <main>
             <h1>Bienvenido <?php echo ucfirst($user -> getName()); ?></h1>
+            <h2>Fichas: <?php echo $user -> GetChips(); ?></h2>
 
             <div class="deck">
                 <?php getDeckCards(); ?>
@@ -46,7 +47,7 @@
 
             <div>
                 <h3>BlackJack</h3>
-                <p><a href="./BlackJack/SinglePlayer.php">SinglePlayer</a></p>
+                <p><a href="./BlackJack/singlePlayer.php">SinglePlayer</a></p>
                 <p><a href="./play.php">MultiPlayer</a> (En desarrollo)</p>
 
                 <h3>Poker</h3>
