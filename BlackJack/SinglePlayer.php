@@ -16,7 +16,10 @@
     if (isset($_POST["request"])) $table -> addPlayerCard();
 
     if (isset($_POST["stake"])) {
+        $user -> removeChips($_POST["amount"]);
         $table -> getPlayer() -> stake($_POST["amount"]);
+
+        //updateChipsDB();
 
         $table -> addPlayerCard();
         $table -> addCrupierCard();
@@ -26,7 +29,7 @@
     if (isset($_POST["spend"])) {
         $table -> getPlayer() -> spend();
 
-        while ($table -> getCrupier() -> getScore() < 18) $table -> addCrupierCard();
+        while ($table -> getCrupier() -> getScore() < 17) $table -> addCrupierCard();
     }
 ?>
 <!DOCTYPE html>
@@ -41,38 +44,45 @@
         <title>AlbertoST Informática - Casino - BlackJack</title>
     </head>
 
-    <body>
+    <body class="game">
         <main class="table">
             <div class="crupier">
-                <?php if ($table -> getPlayer() -> getHand() != null) { ?>
-                    <h3>Puntuación Crupier: <?php echo $table -> getCrupier() -> getScore(); ?></h3>
-                    <?php $table -> getCrupier() -> showCards(); ?>
-                <?php } ?>
+                <h1>Crupier</h1>
+                <h3>Puntuación: <?php echo $table -> getCrupier() -> getScore(); ?></h3>
+                <?php $table -> getCrupier() -> showCards(); ?>
             </div>
 
             <div class="player">
-                <?php if ($table -> getPlayer() -> getHand() != null) { ?>
-                    <h3>Puntuación Jugador: <?php echo $table -> getPlayer() -> getHand() -> getScore(); ?></h3>
+                <h1>Jugador</h1>
+
+                <?php if ($table -> getPlayer() -> getHand() == null) { ?>
+                    <h3>Puntuación: 0</h3>
+                    <h3>Apuesta: 0</h3>
+                <?php } else { ?>
+                    <h3>Puntuación: <?php echo $table -> getPlayer() -> getHand() -> getScore(); ?></h3>
+                    <h3>Apuesta: <?php echo $table -> getPlayer() -> getHand() -> getBet(); ?></h3>
                     <?php $table -> getPlayer() -> getHand() -> showCards(); ?>
                 <?php } ?>
             </div>
 
-            <div class="buttons">
-                <?php if ($table -> getPlayer() -> getHand() != null) echo $table -> getPlayer() -> getHand() -> getBet(); ?>
+            <hr>
+
+            <div class="controls">
+                <h3>Saldo: <?php echo $table -> getPlayer() -> getChips(); ?></h3>
 
                 <form action="./singlePlayer.php" method="post">
                     <?php if ($table -> getPlayer() -> getHand() == null) { ?>
-                        <input type="number" name="amount" min="10" max="<?php echo $user -> getChips(); ?>" required>
+                        <input type="number" name="amount" value="10" min="10" max="<?php echo $user -> getChips(); ?>" required>
                         <input type="submit" name="stake" value="Apostar">
-                    <?php } else { ?>
+                    <?php } elseif ($table -> getPlayer() -> getHand() -> getPlaying()) { ?>
                         <input type="submit" name="request" value="Pedir">
                         <input type="submit" name="spend" value="Pasar">
-                    <?php } ?>
-
-                    <?php if ($table -> getCrupier() -> getScore() > 16) { ?>
-                        <input type="submit" name="reset" value="Resetear Mesa">
+                    <?php } else { ?>
+                        <input class="exit" type="submit" name="reset" value="Nueva Partida">
                     <?php } ?>
                 </form>
+
+                <a href="../play.php"><input class="exit" type="button" value="Salir"></a>
             </div>
         </main>
     </body>

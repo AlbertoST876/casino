@@ -115,11 +115,7 @@ class Crupier {
         }
 
         if ($this -> score > 16) $this -> playing = false;
-        
-        if ($this -> score > 21) {
-            $this -> playing = false;
-            $this -> invalidScore = true;
-        }
+        if ($this -> score > 21) $this -> invalidScore = true;
     }
 }
 

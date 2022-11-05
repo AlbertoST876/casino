@@ -37,7 +37,7 @@
 
         <main>
             <h1>Bienvenido <?php echo ucfirst($user -> getName()); ?></h1>
-            <h2>Fichas: <?php echo $user -> GetChips(); ?></h2>
+            <h2>Saldo: <?php echo $user -> getChips(); ?></h2>
 
             <div class="deck">
                 <?php getDeckCards(); ?>

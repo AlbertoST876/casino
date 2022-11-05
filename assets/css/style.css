@@ -160,14 +160,37 @@ header nav ul li a#actual {
     }
     /* LOGIN */
 
-    /* TABLE */
-    .table {
-        display: block;
-        padding: 20px;
-        width: calc(100vw - 40px);
-        height: calc(100vh - 40px);
+    /* GAME */
+    .game {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        color: #dddddd;
         background-image: url(../img/background.png);
         background-repeat: repeat;
     }
-    /* TABLE */
+
+    .table {
+        display: block;
+        margin: 0 auto;
+        width: 30%;
+    }
+
+    .controls input {
+        display: inline-block;
+        margin: 10px 0;
+        padding: 5px;
+        width: 20%;
+    }
+
+    .controls .exit {
+        display: block;
+        margin: 10px 0;
+        padding: 5px;
+        width: 100%;
+    }
+    /* GAME */
 /* MAIN */
