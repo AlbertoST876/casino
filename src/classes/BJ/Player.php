@@ -100,22 +100,23 @@ class Player extends User {
     /**
      * Pasa la mano
      *
-     * @return bool
+     * @return void
      */
-    public function spend(): bool {
+    public function spend(): void {
         $this -> hand -> setPlaying(false);
-
-        return false;
     }
 
     /**
-     * Comprueba la puntuación final con la del crupier
+     * Comprueba la puntuación final con la del crupier y devuelve las fichas ganadas
      *
      * @param int $crupierScore Puntuación del crupier
-     * @return void
+     * @return int
      */
-    public function check(int $crupierScore): void {
-        $this -> addChips($this -> hand -> check($crupierScore));
+    public function check(int $crupierScore): int {
+        $reward = $this -> hand -> check($crupierScore);
+        $this -> addChips($reward);
+
+        return $reward;
     }
 }
 

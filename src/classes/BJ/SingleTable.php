@@ -65,25 +65,19 @@ class SingleTable {
     /**
      * Da una carta del barajador al jugador
      *
-     * @return int
+     * @return void
      */
-    public function addPlayerCard(): int {
-        $card = $this -> shuffler -> getCard();
-
-        return $this -> player -> giveCard($card);
+    public function addPlayerCard(): void {
+        $this -> player -> giveCard($this -> shuffler -> getCard());
     }
 
     /**
      * Da una carta del barajador al crupier
      *
-     * @return int
+     * @return void
      */
-    public function addCrupierCard(): int {
-        $card = $this -> shuffler -> getCard();
-
-        $this -> crupier -> giveCard($card);
-
-        return $this -> crupier -> getScore();
+    public function addCrupierCard(): void {
+        $this -> crupier -> giveCard($this -> shuffler -> getCard());
     }
 }
 

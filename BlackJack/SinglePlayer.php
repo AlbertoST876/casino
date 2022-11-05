@@ -29,7 +29,7 @@
     if (isset($_POST["spend"])) {
         $table -> getPlayer() -> spend();
 
-        while ($table -> getCrupier() -> getScore() < 17) $table -> addCrupierCard();
+        while ($table -> getCrupier() -> getPlaying()) $table -> addCrupierCard();
     }
 ?>
 <!DOCTYPE html>
@@ -72,10 +72,9 @@
                 <?php
                     if ($table -> getPlayer() -> getHand() != null) {
                         if (!$table -> getPlayer() -> getHand() -> getPlaying()) {
-                            $reward = $table -> getPlayer() -> getHand() -> check($table -> getCrupier() -> getScore());
+                            $reward = $table -> getPlayer() -> check($table -> getCrupier() -> getScore());
     
                             $user -> addChips($reward);
-                            $table -> getPlayer() -> addChips($reward);
 
                             updateChipsDB();
 
@@ -94,7 +93,7 @@
 
                 <form action="./singlePlayer.php" method="post">
                     <?php if ($table -> getPlayer() -> getHand() == null) { ?>
-                        <input type="number" name="amount" value="10" min="10" max="<?php echo $user -> getChips(); ?>" required>
+                        <input type="number" name="amount" value="20" min="20" max="<?php echo $user -> getChips(); ?>" required>
                         <input type="submit" name="stake" value="Apostar">
                     <?php } elseif ($table -> getPlayer() -> getHand() -> getPlaying()) { ?>
                         <input type="submit" name="request" value="Pedir">

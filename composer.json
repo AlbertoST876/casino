@@ -5,7 +5,7 @@
     "type": "project",
     "license": "GPL-3.0-only",
     "minimum-stability": "dev",
-    "time": "2022-11-04 09:30:00",
+    "time": "2022-11-05 12:45:00",
     "authors": [
         {
             "name": "Alberto Sánchez Torreblanca",
@@ -25,8 +25,8 @@
     "autoload": {
         "psr-4": {
             "Casino\\Classes\\": "src/classes/",
-            "Casino\\Classes\\Cards\\": "src/classes/cards/",
-            "Casino\\Classes\\BJ\\": "src/classes/BJ/"
+            "Casino\\Classes\\BJ\\": "src/classes/BJ/",
+            "Casino\\Classes\\Cards\\": "src/classes/cards/"
         },
         "files": [
             "./src/functions/login.php",
@@ -37,8 +37,8 @@
     "autoload-dev": {
         "psr-4": {
             "Casino\\Classes\\": "src/classes/",
-            "Casino\\Classes\\Cards\\": "src/classes/cards/",
-            "Casino\\Classes\\BJ\\": "src/classes/BJ/"
+            "Casino\\Classes\\BJ\\": "src/classes/BJ/",
+            "Casino\\Classes\\Cards\\": "src/classes/cards/"
         },
         "files": [
             "./src/functions/login.php",
