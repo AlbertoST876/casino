@@ -140,7 +140,7 @@ class Hand {
      * @return int
      */
     public function check(int $crupierScore): int {
-        if ($crupierScore < $this -> score && !($this -> invalidScore)) return $this -> win();
+        if (($this -> score > $crupierScore || $crupierScore > 21) && !$this -> invalidScore) return $this -> win();
         
         return $this -> lose($crupierScore);
     }
@@ -163,7 +163,7 @@ class Hand {
      * @return int
      */
     private function lose(int $crupierScore): int {
-        if ($crupierScore == $this -> score && !($this -> invalidScore)) return $this -> bet;
+        if ($this -> score == $crupierScore && !$this -> invalidScore) return $this -> bet;
 
         return 0;
     }

@@ -179,6 +179,29 @@ header nav ul li a#actual {
         width: 30%;
     }
 
+    .result {
+        display: block;
+        margin: 10px auto;
+        padding: 5px 0;
+        width: 100%;
+        font-size: 35px;
+        text-align: center;
+        color: #000000;
+        border-radius: 5px;
+    }
+
+    .result.win {
+        background-color: #00ff00;
+    }
+
+    .result.tie {
+        background-color: #ffff00;
+    }
+
+    .result.lose {
+        background-color: #ff0000;
+    }
+
     .controls input {
         display: inline-block;
         margin: 10px 0;

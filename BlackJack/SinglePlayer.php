@@ -19,7 +19,7 @@
         $user -> removeChips($_POST["amount"]);
         $table -> getPlayer() -> stake($_POST["amount"]);
 
-        //updateChipsDB();
+        updateChipsDB();
 
         $table -> addPlayerCard();
         $table -> addCrupierCard();
@@ -48,6 +48,7 @@
         <main class="table">
             <div class="crupier">
                 <h1>Crupier</h1>
+
                 <h3>Puntuación: <?php echo $table -> getCrupier() -> getScore(); ?></h3>
                 <?php $table -> getCrupier() -> showCards(); ?>
             </div>
@@ -68,7 +69,28 @@
             <hr>
 
             <div class="controls">
-                <h3>Saldo: <?php echo $table -> getPlayer() -> getChips(); ?></h3>
+                <?php
+                    if ($table -> getPlayer() -> getHand() != null) {
+                        if (!$table -> getPlayer() -> getHand() -> getPlaying()) {
+                            $reward = $table -> getPlayer() -> getHand() -> check($table -> getCrupier() -> getScore());
+    
+                            $user -> addChips($reward);
+                            $table -> getPlayer() -> addChips($reward);
+
+                            updateChipsDB();
+
+                            if ($reward > $table -> getPlayer() -> getHand() -> getBet()) {
+                                echo "<div class='result win'>Has Ganado!!</div>";
+                            } elseif ($reward == $table -> getPlayer() -> getHand() -> getBet()) {
+                                echo "<div class='result tie'>Has Empatado!!</div>";
+                            } else {
+                                echo "<div class='result lose'>Has Perdido!!</div>";
+                            }
+                        }
+                    }
+                ?>
+
+                <h2>Saldo: <?php echo $table -> getPlayer() -> getChips(); ?></h2>
 
                 <form action="./singlePlayer.php" method="post">
                     <?php if ($table -> getPlayer() -> getHand() == null) { ?>
