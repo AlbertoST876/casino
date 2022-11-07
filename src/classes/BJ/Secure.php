@@ -34,7 +34,7 @@ class Secure {
      * @return int
      */
     public function check(int $crupierScore, int $crupierCountCards): int {
-        if ($crupierScore == 21 && $ $crupierCountCards == 2) return $this -> bet * 3;
+        if ($crupierScore == 21 && $crupierCountCards == 2) return $this -> bet * 3;
 
         return 0;
     }

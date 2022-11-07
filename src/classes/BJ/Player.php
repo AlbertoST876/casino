@@ -89,12 +89,10 @@ class Player extends User {
      * Añade una nueva carta a la mano devolviendo el valor total de la misma
      *
      * @param Card $card Carta que se añade a la mano
-     * @return int
+     * @return void
      */
-    public function giveCard(Card $card): int {
+    public function giveCard(Card $card): void {
         $this -> hand -> addCard($card);
-
-        return $this -> hand -> getScore();
     }
 
     /**
@@ -114,6 +112,13 @@ class Player extends User {
      */
     public function check(int $crupierScore): int {
         $reward = $this -> hand -> check($crupierScore);
+        $this -> addChips($reward);
+
+        return $reward;
+    }
+
+    public function checkSecure(int $crupierScore, int $crupierCountCards): int {
+        $reward = $this -> secure -> check($crupierScore, $crupierCountCards);
         $this -> addChips($reward);
 
         return $reward;

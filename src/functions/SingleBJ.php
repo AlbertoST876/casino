@@ -14,7 +14,7 @@ function newSingleTableBJ(): SingleTable {
 }
 
 /**
- * Actualiza las fechas del jugador en la base de datos
+ * Actualiza las fichas del jugador en la base de datos
  *
  * @return void
  */
