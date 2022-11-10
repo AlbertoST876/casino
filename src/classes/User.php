@@ -73,9 +73,19 @@ class User {
     }
 
     /**
+     * Establece la cantidad de fichas del usuario 
+     *
+     * @param int $amount Cantidad de fichas
+     * @return void
+     */
+    public function setChips(int $amount = 1000): void {
+        $this -> chips = $amount;
+    }
+
+    /**
      * Añade una cantidad de fichas al usuario
      *
-     * @param int $amount Cantidad a añadir
+     * @param int $amount Cantidad de fichas a añadir
      * @return void
      */
     public function addChips(int $amount): void {
@@ -85,7 +95,7 @@ class User {
     /**
      * Quita una cantidad de fichas al usuario
      *
-     * @param int $amount Cantidad a eliminar
+     * @param int $amount Cantidad de fichas a eliminar
      * @return void
      */
     public function removeChips(int $amount): void {

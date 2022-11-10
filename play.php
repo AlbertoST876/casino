@@ -8,6 +8,12 @@
     }
 
     $user = $_SESSION["user"];
+
+    if (isset($_POST["resetChips"])) {
+        $user -> setChips();
+
+        if (isset($_SESSION["table"])) $_SESSION["table"] -> getPlayer() -> setChips(1000);
+    }
 ?>
 <!DOCTYPE html>
 
@@ -38,6 +44,7 @@
         <main>
             <h1>Bienvenido <?php echo ucfirst($user -> getName()); ?></h1>
             <h2>Saldo: <?php echo $user -> getChips(); ?></h2>
+            <?php if ($user -> getChips() < 1000) echo "<form action='./play.php' method='post'><input type='submit' name='resetChips' value='Resetear'></form>"; ?>
 
             <div class="deck">
                 <?php getDeckCards(); ?>
