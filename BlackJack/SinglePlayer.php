@@ -17,21 +17,25 @@
     if (isset($_POST["request"])) $table -> addPlayerCard();
 
     if (isset($_POST["stake"])) {
-        $user -> removeChips($_POST["amount"]);
-        $table -> getPlayer() -> stake($_POST["amount"]);
+        if ($_POST["amount"] <= $this -> getChips()) {
+            $user -> removeChips($_POST["amount"]);
+            $table -> getPlayer() -> stake($_POST["amount"]);
 
-        updateChipsDB();
+            updateChipsDB();
 
-        $table -> addPlayerCard();
-        $table -> addCrupierCard();
-        $table -> addPlayerCard();
+            $table -> addPlayerCard();
+            $table -> addCrupierCard();
+            $table -> addPlayerCard();
+        }
     }
 
     if (isset($_POST["secure"])) {
-        $user -> removeChips($_POST["amount"]);
-        $table -> getPlayer() -> secure($_POST["amount"]);
+        if ($_POST["amount"] <= $this -> getChips()) {
+            $user -> removeChips($_POST["amount"]);
+            $table -> getPlayer() -> secure($_POST["amount"]);
 
-        updateChipsDB();
+            updateChipsDB();
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -120,7 +124,7 @@
 
                         <?php if ($table -> getCrupier() -> getScore() == 11 && $table -> getCrupier() -> getCardsCount() == 1 && $table -> getPlayer() -> getSecure() == null) { ?>
                             <div>
-                                <input type="number" name="amount" value="0" min="0" max="<?php echo floor($table -> getPlayer() -> getHand() -> getBet() / 2); ?>" required>
+                                <input type="number" name="amount" value="0" min="0" max="<?php echo $table -> getPlayer() -> getChips() < floor($table -> getPlayer() -> getHand() -> getBet() / 2) ? $table -> getPlayer() -> getChips() : floor($table -> getPlayer() -> getHand() -> getBet() / 2); ?>" required>
                                 <input type="submit" name="secure" value="Apostar Seguro">
                             </div>
                         <?php } ?>
