@@ -112,7 +112,7 @@
 
                 <form action="./singlePlayer.php" method="post">
                     <?php if ($table -> getPlayer() -> getHand() == null) { ?>
-                        <input type="number" name="amount" value="20" min="20" max="<?php echo $user -> getChips(); ?>" required>
+                        <input type="number" name="amount" value="10" min="10" max="<?php echo $user -> getChips(); ?>" required>
                         <input type="submit" name="stake" value="Apostar">
                     <?php } elseif ($table -> getPlayer() -> getHand() -> getPlaying()) { ?>
                         <input type="submit" name="request" value="Pedir">
@@ -120,7 +120,7 @@
 
                         <?php if ($table -> getCrupier() -> getScore() == 11 && $table -> getCrupier() -> getCardsCount() == 1 && $table -> getPlayer() -> getSecure() == null) { ?>
                             <div>
-                                <input type="number" name="amount" value="<?php echo floor($table -> getPlayer() -> getHand() -> getBet() / 2); ?>" min="10" max="<?php echo floor($table -> getPlayer() -> getHand() -> getBet() / 2); ?>" required>
+                                <input type="number" name="amount" value="0" min="0" max="<?php echo floor($table -> getPlayer() -> getHand() -> getBet() / 2); ?>" required>
                                 <input type="submit" name="secure" value="Apostar Seguro">
                             </div>
                         <?php } ?>

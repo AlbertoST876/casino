@@ -75,7 +75,7 @@ class Player extends User {
      * @return bool
      */
     public function secure(int $amount): bool {
-        if ($amount <= floor($this -> hand -> getBet() / 2)) {
+        if ($amount <= $this -> getChips() && $amount <= floor($this -> hand -> getBet() / 2 )) {
             $this -> removeChips($amount);
             $this -> secure = new Secure($amount);
 
