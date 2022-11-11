@@ -17,7 +17,7 @@
     if (isset($_POST["request"])) $table -> addPlayerCard();
 
     if (isset($_POST["stake"])) {
-        if ($_POST["amount"] <= $this -> getChips()) {
+        if ($_POST["amount"] <= $user -> getChips()) {
             $user -> removeChips($_POST["amount"]);
             $table -> getPlayer() -> stake($_POST["amount"]);
 
@@ -30,7 +30,7 @@
     }
 
     if (isset($_POST["secure"])) {
-        if ($_POST["amount"] <= $this -> getChips()) {
+        if ($_POST["amount"] <= $user -> getChips()) {
             $user -> removeChips($_POST["amount"]);
             $table -> getPlayer() -> secure($_POST["amount"]);
 
