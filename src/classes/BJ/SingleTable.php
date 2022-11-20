@@ -1,7 +1,7 @@
 <?php
 
 namespace Casino\Classes\BJ;
-use Casino\Classes\BJ\Player;
+use Casino\Classes\User;
 use Casino\Classes\BJ\Crupier;
 use Casino\Classes\Cards\Shuffler;
 
@@ -11,14 +11,14 @@ use Casino\Classes\Cards\Shuffler;
 class SingleTable {
     private Shuffler $shuffler;
     private Crupier $crupier;
-    private Player $player;
+    private User $player;
 
     /**
      * Constructor de la mesa de BlackJack
      * 
-     * @param Player $player Jugador que jugará en la mesa
+     * @param User $player Jugador que jugará en la mesa
      */
-    public function __construct(Player $player) {
+    public function __construct(User $player) {
         $this -> shuffler = new Shuffler();
         $this -> crupier = new Crupier();
         $this -> player = $player;
@@ -56,9 +56,9 @@ class SingleTable {
     /**
      * Obtiene el jugador de la mesa
      *
-     * @return Player
+     * @return User
      */
-    public function getPlayer(): Player {
+    public function getPlayer(): User {
         return $this -> player;
     }
 

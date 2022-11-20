@@ -10,7 +10,7 @@ use Casino\Classes\BJ\SingleTable;
  * @return SingleTable
  */
 function newSingleTableBJ(): SingleTable {
-    return new SingleTable(new Player($_SESSION["user"]));
+    return new SingleTable($_SESSION["user"]);
 }
 
 /**

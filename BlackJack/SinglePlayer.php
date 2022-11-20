@@ -12,14 +12,13 @@
     $user = $_SESSION["user"];
     $table = $_SESSION["table"];
 
+    if (isset($_POST["spend"])) $user -> spend();
     if (isset($_POST["reset"])) $table -> reset();
-    if (isset($_POST["spend"])) $table -> getPlayer() -> spend();
     if (isset($_POST["request"])) $table -> addPlayerCard();
 
     if (isset($_POST["stake"])) {
         if ($_POST["amount"] <= $user -> getChips()) {
-            $user -> removeChips($_POST["amount"]);
-            $table -> getPlayer() -> stake($_POST["amount"]);
+            $user -> stake($_POST["amount"]);
 
             updateChipsDB();
 
@@ -31,8 +30,7 @@
 
     if (isset($_POST["secure"])) {
         if ($_POST["amount"] <= $user -> getChips()) {
-            $user -> removeChips($_POST["amount"]);
-            $table -> getPlayer() -> secure($_POST["amount"]);
+            $user -> secure($_POST["amount"]);
 
             updateChipsDB();
         }
@@ -56,8 +54,8 @@
                 <h1>Crupier</h1>
 
                 <?php
-                    if ($table -> getPlayer() -> getHand() != null) {
-                        if (!$table -> getPlayer() -> getHand() -> getPlaying()) {
+                    if ($user -> getHand() != null) {
+                        if (!$user -> getHand() -> getPlaying()) {
                             while ($table -> getCrupier() -> getPlaying()) $table -> addCrupierCard();
                         }
                     }
@@ -70,18 +68,18 @@
             <div class="player">
                 <h1>Jugador</h1>
 
-                <?php if ($table -> getPlayer() -> getHand() == null) { ?>
+                <?php if ($user -> getHand() == null) { ?>
                     <h3>Puntuación: 0</h3>
                     <h3>Apuesta: 0</h3>
-                <?php } elseif ($table -> getPlayer() -> getSecure() != null) { ?>
-                    <h3>Puntuación: <?php echo $table -> getPlayer() -> getHand() -> getScore(); ?></h3>
-                    <h3>Apuesta: <?php echo $table -> getPlayer() -> getHand() -> getBet(); ?></h3>
-                    <h3>Seguro: <?php echo $table -> getPlayer() -> getSecure() -> getBet(); ?></h3>
-                    <?php $table -> getPlayer() -> getHand() -> showCards(); ?>
+                <?php } elseif ($user -> getSecure() != null) { ?>
+                    <h3>Puntuación: <?php echo $user -> getHand() -> getScore(); ?></h3>
+                    <h3>Apuesta: <?php echo $user -> getHand() -> getBet(); ?></h3>
+                    <h3>Seguro: <?php echo $user -> getSecure() -> getBet(); ?></h3>
+                    <?php $user -> getHand() -> showCards(); ?>
                 <?php } else { ?>
-                    <h3>Puntuación: <?php echo $table -> getPlayer() -> getHand() -> getScore(); ?></h3>
-                    <h3>Apuesta: <?php echo $table -> getPlayer() -> getHand() -> getBet(); ?></h3>
-                    <?php $table -> getPlayer() -> getHand() -> showCards(); ?>
+                    <h3>Puntuación: <?php echo $user -> getHand() -> getScore(); ?></h3>
+                    <h3>Apuesta: <?php echo $user -> getHand() -> getBet(); ?></h3>
+                    <?php $user -> getHand() -> showCards(); ?>
                 <?php } ?>
             </div>
 
@@ -89,21 +87,17 @@
 
             <div class="controls">
                 <?php
-                    if ($table -> getPlayer() -> getHand() != null) {
-                        if (!$table -> getPlayer() -> getHand() -> getPlaying()) {
-                            $reward = $table -> getPlayer() -> check($table -> getCrupier() -> getScore());
+                    if ($user -> getHand() != null) {
+                        if (!$user -> getHand() -> getPlaying()) {
+                            $reward = $user -> check($table -> getCrupier() -> getScore());
 
-                            if ($table -> getPlayer() -> getSecure() != null) {
-                                $reward += $table -> getPlayer() -> checkSecure($table -> getCrupier() -> getScore(), $table -> getCrupier() -> getCardsCount());
-                            }
-    
-                            $user -> addChips($reward);
+                            if ($user -> getSecure() != null) $reward += $user -> checkSecure($table -> getCrupier() -> getScore(), $table -> getCrupier() -> getCardsCount());
 
                             updateChipsDB();
 
-                            if ($reward > $table -> getPlayer() -> getHand() -> getBet()) {
+                            if ($reward > $user -> getHand() -> getBet()) {
                                 echo "<div class='result win'>Has Ganado!!</div>";
-                            } elseif ($reward == $table -> getPlayer() -> getHand() -> getBet()) {
+                            } elseif ($reward == $user -> getHand() -> getBet()) {
                                 echo "<div class='result tie'>Has Empatado!!</div>";
                             } else {
                                 echo "<div class='result lose'>Has Perdido!!</div>";
@@ -112,19 +106,19 @@
                     }
                 ?>
 
-                <h2>Saldo: <?php echo $table -> getPlayer() -> getChips(); ?></h2>
+                <h2>Saldo: <?php echo $user -> getChips(); ?></h2>
 
                 <form action="./singlePlayer.php" method="post">
-                    <?php if ($table -> getPlayer() -> getHand() == null) { ?>
+                    <?php if ($user -> getHand() == null) { ?>
                         <input type="number" name="amount" value="10" min="10" max="<?php echo $user -> getChips(); ?>" required>
                         <input type="submit" name="stake" value="Apostar">
-                    <?php } elseif ($table -> getPlayer() -> getHand() -> getPlaying()) { ?>
+                    <?php } elseif ($user -> getHand() -> getPlaying()) { ?>
                         <input type="submit" name="request" value="Pedir">
                         <input type="submit" name="spend" value="Pasar">
 
-                        <?php if ($table -> getCrupier() -> getScore() == 11 && $table -> getCrupier() -> getCardsCount() == 1 && $table -> getPlayer() -> getSecure() == null) { ?>
+                        <?php if ($table -> getCrupier() -> getScore() == 11 && $table -> getCrupier() -> getCardsCount() == 1 && $user -> getSecure() == null) { ?>
                             <div>
-                                <input type="number" name="amount" value="0" min="0" max="<?php echo $table -> getPlayer() -> getChips() < floor($table -> getPlayer() -> getHand() -> getBet() / 2) ? $table -> getPlayer() -> getChips() : floor($table -> getPlayer() -> getHand() -> getBet() / 2); ?>" required>
+                                <input type="number" name="amount" value="0" min="0" max="<?php echo $user -> getChips() < floor($user -> getHand() -> getBet() / 2) ? $user -> getChips() : floor($user -> getHand() -> getBet() / 2); ?>" required>
                                 <input type="submit" name="secure" value="Apostar Seguro">
                             </div>
                         <?php } ?>
