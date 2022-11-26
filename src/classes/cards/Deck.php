@@ -14,9 +14,7 @@ class Deck {
      */
     public function __construct() {
         for ($suit = 0; $suit < 4; $suit++) {
-            for ($value = 0; $value < 13; $value++) {
-                $this -> cards[] = new Card($suit, $value);
-            }
+            for ($value = 0; $value < 13; $value++) $this -> cards[] = new Card($suit, $value);
         }
     }
 
