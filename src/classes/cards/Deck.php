@@ -13,9 +13,9 @@ class Deck {
      * Constructor de la baraja
      */
     public function __construct() {
-        for ($stick = 0; $stick < 4; $stick++) {
+        for ($suit = 0; $suit < 4; $suit++) {
             for ($value = 0; $value < 13; $value++) {
-                $this -> cards[] = new Card($stick, $value);
+                $this -> cards[] = new Card($suit, $value);
             }
         }
     }
