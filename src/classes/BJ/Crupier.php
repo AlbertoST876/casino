@@ -68,15 +68,6 @@ class Crupier {
     }
 
     /**
-     * Modifica si el crupier sigue jugando
-     *
-     * @return void
-     */
-    public function setPlaying(bool $status): void {
-        $this -> playing = $status;
-    }
-
-    /**
      * Devuelve si el crupier a perdido pasándose de 21
      *
      * @return bool

@@ -184,7 +184,7 @@ class User {
      * @return void
      */
     public function giveCard(Card $card): void {
-        $this -> BJ_hand -> addCard($card);
+        $this -> BJ_hand -> giveCard($card);
     }
 
     /**

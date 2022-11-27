@@ -104,7 +104,7 @@ class Hand {
      * @param Card $card Carta a añadir a la mano
      * @return void
      */
-    public function addCard(Card $card): void {
+    public function giveCard(Card $card): void {
         $this -> cards[] = $card;
         $this -> addScore($card -> getValue());
     }
