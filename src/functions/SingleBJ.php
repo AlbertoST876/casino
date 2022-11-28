@@ -13,7 +13,7 @@ function newSingleTableBJ(): SingleTable {
 }
 
 /**
- * Actualiza las fichas del jugador en la base de datos
+ * Actualiza las fichas del usuario en la base de datos
  *
  * @return void
  */

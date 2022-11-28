@@ -87,7 +87,7 @@ class User {
      * @param int $amount Cantidad de fichas
      * @return void
      */
-    public function setChips(int $amount = 1000): void {
+    public function setChips(int $amount): void {
         $this -> chips = $amount;
     }
 

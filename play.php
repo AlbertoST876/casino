@@ -10,9 +10,8 @@
     $user = $_SESSION["user"];
 
     if (isset($_POST["resetChips"])) {
-        $user -> setChips();
-
-        if (isset($_SESSION["table"])) $_SESSION["table"] -> getPlayer() -> setChips(1000);
+        $user -> setChips(1000);
+        updateChipsDB();
     }
 ?>
 <!DOCTYPE html>
@@ -55,6 +54,7 @@
             <div>
                 <h3>BlackJack</h3>
                 <p><a href="./BlackJack/singlePlayer.php">SinglePlayer</a></p>
+                <p><a href="./BlackJack/singlePlayerJS.php">SinglePlayerJS</a> (En desarrollo)</p>
                 <p><a href="./play.php">MultiPlayer</a> (En desarrollo)</p>
 
                 <h3>Poker</h3>
