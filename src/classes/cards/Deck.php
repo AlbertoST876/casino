@@ -28,26 +28,25 @@ class Deck {
     }
 
     /**
+     * Obtiene una carta aleatoria de la baraja
+     *
+     * @return Card
+     */
+    public function getRandomCard(): Card {
+        $id = array_rand($this -> cards);
+        $card = $this -> cards[$id];
+        unset($this -> cards[$id]);
+
+        return $card;
+    }
+
+    /**
      * Baraja todas las cartas de la baraja
      *
      * @return void
      */
     public function shuffle(): void {
         shuffle($this -> cards);
-    }
-
-    /**
-     * Obtiene una carta aleatoria de la baraja
-     *
-     * @return Card
-     */
-    public function getRandomCard(): Card {
-        $cardId = array_rand($this -> cards);
-        $card = $this -> cards[$cardId];
-
-        unset($this -> cards[$cardId]);
-
-        return $card;
     }
 }
 

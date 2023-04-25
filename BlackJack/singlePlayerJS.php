@@ -24,7 +24,7 @@
             import {Player} from "../assets/js/Player.js";
             import {SingleTable} from "../assets/js/SingleTable.js";
 
-            const ST = new SingleTable(new Player(<?php $user -> getChips() ?>));
+            const table = new SingleTable(new Player(<?php $user -> getChips() ?>));
 
             function stake(amount) {
                 if (ST.getPlayer().stake(amount)) {
@@ -33,14 +33,14 @@
                         body: JSON.stringify({"action": "stake", "amount": amount})
                     });
 
-                    ST.givePlayerCard();
-                    ST.giveCrupierCard();
-                    ST.givePlayerCard();
+                    table.givePlayerCard();
+                    table.giveCrupierCard();
+                    table.givePlayerCard();
                 }
             }
 
             function secure(amount) {
-                if (ST.getPlayer().secure(amount)) {
+                if (table.getPlayer().secure(amount)) {
                     fetch("../src/functions/API/BJ.php", {
                         method: POST,
                         body: JSON.stringify({"action": "secure", "amount": amount})
@@ -49,15 +49,15 @@
             }
 
             function request() {
-                ST.givePlayerCard();
+                table.givePlayerCard();
             }
 
             function spend() {
-                ST.getPlayer().spend();
+                table.getPlayer().spend();
             }
 
             function reset() {
-                ST.reset();
+                table.reset();
             }
         </script>
     </head>

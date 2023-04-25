@@ -7,28 +7,21 @@ use Casino\Classes\Cards\Card;
  * Clase que define un crupier
  */
 class Crupier {
-    private int $score;
     private array $cards;
     private bool $playing;
     private bool $invalidScore;
+    private int $score;
+    private int $uncheckedAses;
 
     /**
      * Constructor del crupier
      */
     public function __construct() {
-        $this -> score = 0;
         $this -> cards = [];
         $this -> playing = true;
         $this -> invalidScore = false;
-    }
-
-    /**
-     * Obtiene los puntos ganados con las cartas
-     *
-     * @return int
-     */
-    public function getScore(): int {
-        return $this -> score;
+        $this -> score = 0;
+        $this -> uncheckedAses = 0;
     }
 
     /**
@@ -41,21 +34,32 @@ class Crupier {
     }
 
     /**
-     * Muestra las cartas del crupier
-     *
-     * @return void
-     */
-    public function showCards(): void {
-        foreach ($this -> cards as $card) $card -> showGame();
-    }
-
-    /**
      * Obtiene el numero de cartas que tiene el crupier
      *
      * @return int
      */
     public function getCardsCount(): int {
         return count($this -> cards);
+    }
+
+    /**
+     * Añade una carta dada a la mano
+     *
+     * @param Card $card Carta a dar al crupier
+     * @return void
+     */
+    public function giveCard(Card $card): void {
+        $this -> cards[] = $card;
+        $this -> addScore($card -> getValue());
+    }
+
+    /**
+     * Muestra las cartas del crupier
+     *
+     * @return void
+     */
+    public function showCards(): void {
+        foreach ($this -> cards as $card) $card -> showGame();
     }
 
     /**
@@ -77,14 +81,12 @@ class Crupier {
     }
 
     /**
-     * Añade una carta dada a la mano
+     * Obtiene los puntos ganados con las cartas
      *
-     * @param Card $card Carta a dar al crupier
-     * @return void
+     * @return int
      */
-    public function giveCard(Card $card): void {
-        $this -> cards[] = $card;
-        $this -> addScore($card -> getValue());
+    public function getScore(): int {
+        return $this -> score;
     }
 
     /**
@@ -94,15 +96,20 @@ class Crupier {
      * @return void
      */
     private function addScore(string $value): void {
-        if ($value < 11) $this -> score += $value;
-        if ($value == "J" || $value == "Q" || $value == "K") $this -> score += 10;
-        if ($value == "A") $this -> score += 11;
+        if ($value == "J" || $value == "Q" || $value == "K" || $value == "A") {
+            if ($value == "A") {
+                $this -> score += 11;
+                $this -> uncheckedAses++;
+            } else {
+                $this -> score += 10;
+            }   
+        } else {
+            $this -> score += $value;
+        }
 
-        foreach ($this -> cards as $card) {
-            if ($card -> getValue() == "A" && !$card -> getCheck() && $this -> score > 21) {
-                $this -> score -= 10;
-                $card -> check();
-            }
+        while ($this -> score > 21 && $this -> uncheckedAses > 0) {
+            $this -> score -= 10;
+            $this -> uncheckedAses--;
         }
 
         if ($this -> score > 16) $this -> playing = false;

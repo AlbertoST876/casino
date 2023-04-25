@@ -178,13 +178,12 @@ class User {
     }
 
     /**
-     * Añade una nueva carta a la mano devolviendo el valor total de la misma
+     * Comprueba si el jugador ha hecho un seguro
      *
-     * @param Card $card Carta que se añade a la mano
-     * @return void
+     * @return bool
      */
-    public function giveCard(Card $card): void {
-        $this -> BJ_hand -> giveCard($card);
+    public function haveSecure(): bool {
+        return $this -> BJ_secure != null;
     }
 
     /**
@@ -194,6 +193,16 @@ class User {
      */
     public function spend(): void {
         $this -> BJ_hand -> setPlaying(false);
+    }
+
+    /**
+     * Añade una nueva carta a la mano devolviendo el valor total de la misma
+     *
+     * @param Card $card Carta que se añade a la mano
+     * @return void
+     */
+    public function giveCard(Card $card): void {
+        $this -> BJ_hand -> giveCard($card);
     }
 
     /**

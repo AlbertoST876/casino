@@ -14,7 +14,10 @@ class Shuffler {
      * Constructor del barajador
      */
     public function __construct() {
-        for ($deck = 0; $deck < 6; $deck++) $this -> decks[] = new Deck();
+        for ($deck = 0; $deck < 6; $deck++) {
+            $this -> decks[] = new Deck();
+            $this -> decks[$deck] -> shuffle();
+        }
     }
 
     /**
@@ -24,15 +27,6 @@ class Shuffler {
      */
     public function getDecks(): array {
         return $this -> decks;
-    }
-
-    /**
-     * Baraja todas las barajas del barajador
-     *
-     * @return void
-     */
-    public function shuffleDecks(): void {
-        foreach ($this -> decks as $deck) $deck -> shuffle();
     }
 
     /**

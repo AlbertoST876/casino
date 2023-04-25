@@ -8,7 +8,6 @@ namespace Casino\Classes\Cards;
 class Card {
     private int $suit;
     private int $value;
-    private bool $check;
 
     private static $suits = ["Picas", "Corazones", "Tréboles", "Diamantes"];
     private static $values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
@@ -22,7 +21,6 @@ class Card {
     public function __construct(int $suit, int $value) {
         $this -> suit = $suit;
         $this -> value = $value;
-        $this -> check = false;
     }
 
     /**
@@ -50,24 +48,6 @@ class Card {
      */
     public function getValue(): string {
         return self::$values[$this -> value];
-    }
-
-    /**
-     * Obtiene si la carta está checkeada
-     *
-     * @return bool
-     */
-    public function getCheck(): bool {
-        return $this -> check;
-    }
-
-    /**
-     * Checkea la carta
-     *
-     * @return void
-     */
-    public function check(): void {
-        $this -> check = true;
     }
 
     /**

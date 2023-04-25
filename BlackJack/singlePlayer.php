@@ -65,7 +65,7 @@
                 <?php if ($user -> getHand() == null) { ?>
                     <h3>Puntuación: 0</h3>
                     <h3>Apuesta: 0</h3>
-                <?php } elseif ($user -> getSecure() != null) { ?>
+                <?php } elseif ($user -> haveSecure()) { ?>
                     <h3>Puntuación: <?php echo $user -> getHand() -> getScore(); ?></h3>
                     <h3>Apuesta: <?php echo $user -> getHand() -> getBet(); ?></h3>
                     <h3>Seguro: <?php echo $user -> getSecure() -> getBet(); ?></h3>
@@ -85,7 +85,7 @@
                         if (!$user -> getHand() -> getPlaying()) {
                             $reward = $user -> check($table -> getCrupier() -> getScore());
 
-                            if ($user -> getSecure() != null) $reward += $user -> checkSecure($table -> getCrupier() -> getScore(), $table -> getCrupier() -> getCardsCount());
+                            if ($user -> haveSecure()) $reward += $user -> checkSecure($table -> getCrupier() -> getScore(), $table -> getCrupier() -> getCardsCount());
 
                             updateChipsDB();
 
